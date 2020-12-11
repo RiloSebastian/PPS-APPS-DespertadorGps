@@ -1,0 +1,7 @@
+{
+  "name": "despertadorGPS",
+  "integrations": {
+    "cordova": {}
+  },
+  "type": "angular"
+}

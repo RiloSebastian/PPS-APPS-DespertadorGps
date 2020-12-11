@@ -1,0 +1,36 @@
+<ng-container *ngIf='usuario !== null'>
+<ion-header>
+    <ion-toolbar color='tertiary'>
+        <ion-title>
+            GPS
+        </ion-title>
+    </ion-toolbar>
+</ion-header>
+<ion-content>
+    <ion-item color='primary'>
+        <ion-input type='text' [(ngModel)]='direccion' placeholder='Ingresar Dirección'></ion-input>
+    </ion-item>
+    <ion-item color='primary'>
+        <ion-input type='number' [(ngModel)]='radioAprox' placeholder='Ingresar Radio' min=10 max=100></ion-input>
+    </ion-item>
+    <ion-button *ngIf='geoFlag' color='danger' expand='block' (click)='cancelarDire()'>Cancelar Alarma</ion-button>
+    <ion-button *ngIf='!geoFlag' color='secondary' expand='block' (click)='ingresarDire()'>Ingresar</ion-button>
+    <ion-card *ngIf='geoFlag' color='tertiary'>
+        <ion-card-header>
+            <ion-card-title>{{geoData.direc}}</ion-card-title>
+            <ion-card-subtitle>Latitud: {{geoData.lat}}</ion-card-subtitle>
+            <ion-card-subtitle>Longitud: {{geoData.long}}</ion-card-subtitle>
+        </ion-card-header>
+        <ion-card-content>
+            <ion-label>Distancia: {{geoData.distancia}}</ion-label>
+            <br>
+            <ion-label>Radio: {{geoData.radio}}</ion-label>
+        </ion-card-content>
+    </ion-card>
+</ion-content>
+<ion-footer>
+    <ion-toolbar color='tertiary'>
+        <ion-button color='danger' expand='block' (click)='cerrarSesion()'>Cerrar Sesion</ion-button>
+    </ion-toolbar>
+</ion-footer>
+</ng-container>
