@@ -12,6 +12,7 @@ import { NativeGeocoder } from '@ionic-native/native-geocoder/ngx';
 import { MediaCapture } from '@ionic-native/media-capture/ngx';
 import { Geolocation } from '@ionic-native/geolocation/ngx';
 import { Vibration } from '@ionic-native/vibration/ngx';
+import { File } from '@ionic-native/file/ngx';
 
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
@@ -48,6 +49,7 @@ import { LoginComponent } from './login/login.component';
 		SplashScreen,
 		Geofence,
 		Geolocation,
+		File,
 		NativeGeocoder,
 		MediaCapture,
 		Vibration,

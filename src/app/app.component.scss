@@ -1,0 +1,47 @@
+#superpuesto {
+    display: flex;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 10;
+    width: 100%;
+    background-color: #F08B03;
+}
+
+#splash {
+    --background: #F08B03;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#fondo {
+    position: absolute;
+    z-index: 20;
+    top: 150px;
+    transform: scale(0.70);
+}
+
+#icono {
+    position: absolute;
+    z-index: 30;
+    top: 280px;
+    width: 100px;
+    height: 100px;
+    animation: icono ease 2s forwards;
+}
+
+@keyframes icono {
+    0% {
+        transform: translate(0px, 0px) scale(1.30);
+    } 25%{
+        transform: translate(0px, 0px) scale(1.30);
+    }
+    100% {
+        transform: translate(450px, 0px) scale(1.30);
+    }
+}

@@ -1,36 +1,55 @@
-<ng-container *ngIf='usuario !== null'>
-<ion-header>
-    <ion-toolbar color='tertiary'>
-        <ion-title>
-            GPS
-        </ion-title>
-    </ion-toolbar>
-</ion-header>
-<ion-content>
-    <ion-item color='primary'>
-        <ion-input type='text' [(ngModel)]='direccion' placeholder='Ingresar Dirección'></ion-input>
-    </ion-item>
-    <ion-item color='primary'>
-        <ion-input type='number' [(ngModel)]='radioAprox' placeholder='Ingresar Radio' min=10 max=100></ion-input>
-    </ion-item>
-    <ion-button *ngIf='geoFlag' color='danger' expand='block' (click)='cancelarDire()'>Cancelar Alarma</ion-button>
-    <ion-button *ngIf='!geoFlag' color='secondary' expand='block' (click)='ingresarDire()'>Ingresar</ion-button>
-    <ion-card *ngIf='geoFlag' color='tertiary'>
-        <ion-card-header>
-            <ion-card-title>{{geoData.direc}}</ion-card-title>
-            <ion-card-subtitle>Latitud: {{geoData.lat}}</ion-card-subtitle>
-            <ion-card-subtitle>Longitud: {{geoData.long}}</ion-card-subtitle>
-        </ion-card-header>
-        <ion-card-content>
-            <ion-label>Distancia: {{geoData.distancia}}</ion-label>
-            <br>
-            <ion-label>Radio: {{geoData.radio}}</ion-label>
-        </ion-card-content>
-    </ion-card>
-</ion-content>
-<ion-footer>
-    <ion-toolbar color='tertiary'>
-        <ion-button color='danger' expand='block' (click)='cerrarSesion()'>Cerrar Sesion</ion-button>
-    </ion-toolbar>
-</ion-footer>
+<ng-container *ngIf='!splash'>
+    <ion-menu side="start" content-id="main-content">
+        <ion-header>
+            <ion-toolbar color='elemento'>
+                <ion-title>
+                    Historial de viajes
+                </ion-title>
+            </ion-toolbar>
+        </ion-header>
+        <ion-content color='fondo'>
+            <ion-list style='--ion-background-color: var(--ion-color-fondo)'>
+                <ion-item color='elemento' *ngFor='let viaje of listadoViajes'>
+                    <ion-label>
+                        <p>fecha: {{viaje.fecha | date: 'medium'}}</p>
+                        <p>destino:{{viaje.destino}}</p>
+                        <p>radio de alarma: {{viaje.radio}}</p>
+                    </ion-label>
+                </ion-item>
+            </ion-list>
+        </ion-content>
+    </ion-menu>
+    <div class="ion-page" id="main-content">
+        <ion-header>
+            <ion-toolbar color='elemento'>
+                <ion-buttons slot="start">
+                    <ion-menu-button></ion-menu-button>
+                </ion-buttons>
+                <ion-title>
+                    {{usuario.email}}
+                </ion-title>
+            </ion-toolbar>
+        </ion-header>
+        <ion-content color='fondo'>
+            <ion-item color='elemento'>
+                <ion-input type='text' [(ngModel)]='geoData.direc' placeholder='Ingresar Dirección'></ion-input>
+                <ion-button [disabled]='geoFlag' color='secondary' (click)='ingresarDire()'>Ingresar</ion-button>
+            </ion-item>
+            <ion-item color='elemento'>
+                <ion-input type='number' [(ngModel)]='geoData.radio' placeholder='Ingresar Radio' min=10 max=100></ion-input>
+                <ion-button [disabled]='geoFlag' color='secondary' (click)='grabarAlarma()'>Grabar Alarma</ion-button>
+            </ion-item>
+            <ion-button *ngIf='!geoFlag' color='primary' expand='block' (click)='iniciarViaje()'>Iniciar viaje</ion-button>
+            <ion-button *ngIf='geoFlag' color='danger' expand='block' (click)='cancelarViaje()'>Cancelar viaje</ion-button>
+            <div class="map-wrapper">
+                <div #map id="map"></div>
+            </div>
+        </ion-content>
+        <ion-footer>
+            <ion-toolbar color='elemento'>
+                <ion-button color='danger' expand='block' (click)='cerrarSesion()'>Cerrar Sesion</ion-button>
+            </ion-toolbar>
+        </ion-footer>
+    </div>
 </ng-container>
+<img *ngIf='splash' class='spinnerA' src="../../assets/logoMov.png">

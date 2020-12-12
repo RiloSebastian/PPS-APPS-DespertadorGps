@@ -9,12 +9,17 @@
             <ion-item lines='none' class='ion-text-center'>
                 <ion-title>Iniciar Sesion</ion-title>
             </ion-item>
-            <ion-item class='ion-padding-horizontal'>
-                <ion-label>Elegir Usuarios</ion-label>
-                <ion-select interface='popover' (ionChange)='seleccionarUsuario($event.target.value)'>
-                    <ion-select-option *ngFor='let usuario of usuarios' [value]='usuario'>{{usuario.correo}}</ion-select-option>
-                </ion-select>
-            </ion-item>
+            <div align="center">
+                <ion-button color='elemento' (click)='seleccionarUsuario(usuarios[0])'>{{usuarios[0].correo}}</ion-button>
+                <br>
+                <ion-button color='elemento' (click)='seleccionarUsuario(usuarios[1])'>{{usuarios[1].correo}}</ion-button>
+                <br>
+                <ion-button color='elemento' (click)='seleccionarUsuario(usuarios[2])'>{{usuarios[2].correo}}</ion-button>
+                <br>
+                <ion-button color='elemento' (click)='seleccionarUsuario(usuarios[3])'>{{usuarios[3].correo}}</ion-button>
+                <br>
+                <ion-button color='elemento' (click)='seleccionarUsuario(usuarios[4])'>{{usuarios[4].correo}}</ion-button>
+            </div>
             <ion-item class='ion-padding-horizontal'>
                 <ion-input type='text' formControlName='iUsuario' placeholder='Correo Electronico' require></ion-input>
             </ion-item>
@@ -29,9 +34,9 @@
                 <ion-label *ngIf='ngForm.submitted && loginForm.controls.iPassword.errors' color='danger'><small>La contraseña no tiene un formato correcto</small></ion-label>
             </div>
             <div class='submit-button'>
-            <div *ngIf='ngForm.submitted && mensajeError !== null' class="ion-text-center" style='color: #eb445a'>{{mensajeError}}</div>
-            <ion-button type='submit' expand='block' color='elemento' (click)='tryLogin()'>Iniciar Sesion</ion-button>
-            <small class="ion-padding-horizontal"><i style='color: grey'>pista: usuario1 - 111111</i></small>
+                <div *ngIf='ngForm.submitted && mensajeError !== null' class="ion-text-center" style='color: #eb445a'>{{mensajeError}}</div>
+                <ion-button type='submit' expand='block' color='elemento' (click)='tryLogin()'>Iniciar Sesion</ion-button>
+                <small class="ion-padding-horizontal"><i style='color: grey'>pista: usuario1 - 111111</i></small>
             </div>
         </div>
     </form>

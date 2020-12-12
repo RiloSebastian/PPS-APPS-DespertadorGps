@@ -1,3 +1,9 @@
 <ion-app>
-  <ion-router-outlet></ion-router-outlet>
+    <div *ngIf='splash' id='superpuesto'>
+        <div id='splash'>
+            <img id="fondo" src="../assets/fondoAnimFondo.png">
+            <img id="icono" src="../assets/fondoAnimIcon.png">
+        </div>
+    </div>
+    <ion-router-outlet></ion-router-outlet>
 </ion-app>

@@ -1,0 +1,25 @@
+#map {
+    height: 380px;
+    width: 100%;
+}
+
+.spinnerA {
+    z-index: 10;
+    position: absolute;
+    top: 180px;
+    height: 200;
+    width: 200;
+    animation: spinner 1s ease-in-out infinite both;
+}
+
+@keyframes spinner {
+    0% {
+        -webkit-transform: rotate(0);
+        transform: rotate(0);
+    }
+
+    100% {
+        -webkit-transform: rotate(360deg);
+        transform: rotate(360deg);
+    }
+}
